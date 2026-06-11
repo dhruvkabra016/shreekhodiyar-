@@ -57,19 +57,27 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.5 }}
           style={{ flex: '1 1 500px', display: 'flex', justifyContent: 'center', position: 'relative' }}
         >
-          {/* Abstract 3D shape or placeholder for a 3D Car */}
           <div style={{
-            width: '400px',
-            height: '400px',
-            background: 'linear-gradient(135deg, rgba(212, 175, 119, 0.4), rgba(128, 0, 0, 0.2))',
-            borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
-            boxShadow: '0 0 100px rgba(212, 175, 119, 0.3)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '2px solid rgba(212, 175, 119, 0.5)'
+            width: '100%',
+            maxWidth: '500px',
+            height: '350px',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
+            border: '2px solid rgba(212, 175, 119, 0.3)',
+            position: 'relative'
           }}>
-             <h2 className="text-gold" style={{ opacity: 0.5 }}>Premium Vehicle</h2>
+            <img 
+              src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1000&auto=format&fit=crop" 
+              alt="Premium Luxury Car" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Elegant overlay gradient */}
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              background: 'linear-gradient(to top, rgba(10,17,40,0.8) 0%, transparent 50%)'
+            }}></div>
           </div>
         </motion.div>
         
