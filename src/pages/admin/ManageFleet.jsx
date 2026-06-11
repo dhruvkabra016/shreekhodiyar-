@@ -31,7 +31,7 @@ const ManageFleet = () => {
   return (
     <div>
       <div className="flex-between" style={{ marginBottom: '32px' }}>
-        <h2 className="text-gradient" style={{ margin: 0 }}>Manage Fleet</h2>
+        <h2 className="text-gradient" style={{ margin: 0 }}>Manage Cars</h2>
         <button className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={() => { setFormData({ id: null, name: '', type: '', capacity: '', price: '', img: '' }); setShowForm(!showForm); }}>
           <Plus size={20} /> Add New Car
         </button>

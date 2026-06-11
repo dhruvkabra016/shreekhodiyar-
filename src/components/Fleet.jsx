@@ -6,7 +6,7 @@ const Fleet = () => {
   const { fleet } = useContext(DataContext);
 
   return (
-    <section id="fleet" style={{ padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="cars" style={{ padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{
         position: 'absolute',
         top: '50%', left: '50%',
@@ -19,7 +19,7 @@ const Fleet = () => {
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h2 className="text-gradient" style={{ fontSize: '48px', marginBottom: '16px' }}>Our Premium Fleet</h2>
+          <h2 className="text-gradient" style={{ fontSize: '48px', marginBottom: '16px' }}>Our Premium Cars</h2>
           <p style={{ color: '#ccc', fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
             Travel in ultimate comfort with our meticulously maintained luxury vehicles.
           </p>

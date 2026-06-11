@@ -71,7 +71,7 @@ const AdminLayout = () => {
           <LayoutDashboard size={20} /> Dashboard
         </Link>
         <Link to="/admin/fleet" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <Car size={20} /> Manage Fleet
+          <Car size={20} /> Manage Cars
         </Link>
         <Link to="/admin/bookings" style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Calendar size={20} /> Bookings

@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className="desktop-menu" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <Link to="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
           <a href="/#destinations" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Destinations</a>
-          <a href="/#fleet" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Fleet</a>
+          <a href="/#cars" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Cars</a>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-primary-gold)', fontWeight: 700 }}>
             <Phone size={20} />

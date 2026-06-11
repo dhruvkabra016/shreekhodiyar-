@@ -42,7 +42,7 @@ const HeroSection = () => {
             Experience Gujarat <br/> in Style
           </h1>
           <p style={{ fontSize: '20px', color: '#ccc', marginBottom: '40px', maxWidth: '500px', lineHeight: 1.6 }}>
-            Premium travel experiences with our luxury fleet. Explore Dwarka, Somnath, and beyond with supreme comfort and zero gravity smooth rides.
+            Premium travel experiences with our luxury cars. Explore Dwarka, Somnath, and beyond with supreme comfort and zero gravity smooth rides.
           </p>
           
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>

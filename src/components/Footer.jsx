@@ -24,7 +24,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <li><a href="#home" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Home</a></li>
               <li><a href="#destinations" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Destinations</a></li>
-              <li><a href="#fleet" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Our Fleet</a></li>
+              <li><a href="#cars" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Our Cars</a></li>
             </ul>
           </div>
 
