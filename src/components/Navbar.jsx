@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +35,16 @@ const Navbar = () => {
       }}
     >
       <div className="container flex-between">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div className="text-gold" style={{ fontWeight: 900, fontSize: '24px', letterSpacing: '1px' }}>
             SHREE KHODIYAR
           </div>
-        </div>
+        </Link>
 
         <div className="desktop-menu" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <a href="#home" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Home</a>
-          <a href="#destinations" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Destinations</a>
-          <a href="#fleet" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Fleet</a>
+          <Link to="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+          <a href="/#destinations" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Destinations</a>
+          <a href="/#fleet" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Fleet</a>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-primary-gold)', fontWeight: 700 }}>
             <Phone size={20} />
@@ -52,7 +54,7 @@ const Navbar = () => {
           <button 
             className="btn-primary" 
             style={{ padding: '10px 24px' }}
-            onClick={() => window.open('https://wa.me/917383304550?text=Hi!%20I%20would%20like%20to%20book%20a%20ride%20with%20Shree%20Khodiyar%20Travels.', '_blank')}
+            onClick={() => navigate('/book')}
           >
             Book Now
           </button>
