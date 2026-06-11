@@ -25,7 +25,6 @@ const Footer = () => {
               <li><a href="#home" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Home</a></li>
               <li><a href="#destinations" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Destinations</a></li>
               <li><a href="#fleet" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Our Fleet</a></li>
-              <li><a href="/admin" style={{ color: '#aaa', textDecoration: 'none', transition: 'color 0.3s' }}>Admin Dashboard</a></li>
             </ul>
           </div>
 
