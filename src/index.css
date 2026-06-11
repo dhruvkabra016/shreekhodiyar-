@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap');
+
+:root {
+  --color-bg-navy: #0a1128;
+  --color-primary-gold: #D4AF77;
+  --color-accent-maroon: #800000;
+  --color-text-light: #f5f5f5;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(212, 175, 119, 0.2);
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-navy);
+  color: var(--color-text-light);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Typography */
+.text-gold {
+  color: var(--color-primary-gold);
+}
+.text-gradient {
+  background: linear-gradient(90deg, #D4AF77, #ffffff, #D4AF77);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* 3D Anti-Gravity Effects */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+.floating-delayed {
+  animation: float 6s ease-in-out 3s infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.hover-3d {
+  transition: var(--transition-smooth);
+  transform-style: preserve-3d;
+}
+.hover-3d:hover {
+  transform: translateY(-15px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(212, 175, 119, 0.25);
+  border-color: rgba(212, 175, 119, 0.5);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary-gold), #b38e55);
+  color: var(--color-bg-navy);
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(212, 175, 119, 0.3);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Admin Dashboard Specifics */
+.admin-sidebar {
+  background: rgba(10, 17, 40, 0.95);
+  border-right: 1px solid var(--color-glass-border);
+}
