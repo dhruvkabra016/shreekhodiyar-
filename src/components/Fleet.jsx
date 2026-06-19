@@ -29,36 +29,89 @@ const Fleet = () => {
           {fleet.map((car, index) => (
             <motion.div
               key={car.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="hover-3d"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               style={{
-                background: 'linear-gradient(145deg, rgba(20, 25, 50, 0.8), rgba(10, 17, 40, 0.9))',
-                borderRadius: '24px',
-                padding: '30px',
-                border: '1px solid var(--color-glass-border)',
-                boxShadow: '0 15px 35px rgba(0,0,0,0.4)',
-                textAlign: 'center'
+                background: 'white',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.15)',
+                color: '#333',
+                display: 'flex',
+                flexDirection: 'column'
               }}
             >
-              <div className="floating" style={{ animationDelay: `${index * 1.5}s`, marginBottom: '30px' }}>
-                <img src={car.img} alt={car.name} style={{ width: '100%', height: '200px', objectFit: 'cover', borderRadius: '12px', filter: 'drop-shadow(0 20px 20px rgba(0,0,0,0.5))' }} />
+              {/* Image Container with Badge */}
+              <div style={{ position: 'relative', background: '#f5f5f5', padding: '20px 0', borderBottom: '1px solid #eee' }}>
+                <img 
+                  src={car.img} 
+                  alt={car.name} 
+                  style={{ width: '100%', height: '180px', objectFit: 'contain', filter: 'drop-shadow(0 10px 10px rgba(0,0,0,0.2))' }} 
+                />
+                <div style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '0',
+                  background: '#FFD700', // Yellow badge
+                  color: '#000',
+                  padding: '8px 24px',
+                  fontWeight: 'bold',
+                  fontSize: '18px',
+                  borderTopLeftRadius: '8px',
+                  borderBottomLeftRadius: '8px',
+                  boxShadow: '-4px 4px 10px rgba(0,0,0,0.1)'
+                }}>
+                  ₹{car.price}/- DAY
+                </div>
               </div>
-              <h3 className="text-gold" style={{ fontSize: '26px', marginBottom: '8px' }}>{car.name}</h3>
-              <p style={{ color: '#aaa', fontSize: '16px', marginBottom: '16px' }}>{car.type} • {car.capacity} Seats</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px' }}>
-                <span style={{ fontSize: '22px', fontWeight: 'bold' }}>₹{car.price}/day</span>
+
+              {/* Card Content */}
+              <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontSize: '24px', fontWeight: '800', textAlign: 'center', marginBottom: '24px', textTransform: 'uppercase' }}>
+                  {car.name}
+                </h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px', flex: 1 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
+                    <span style={{ textTransform: 'uppercase' }}>{car.name}</span>
+                    <span>₹{car.price}/- DAY</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
+                    <span>SEATS:</span>
+                    <span style={{ fontWeight: '500', color: '#333' }}>{car.capacity}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
+                    <span>TYPE:</span>
+                    <span style={{ fontWeight: '500', color: '#333', textTransform: 'uppercase' }}>{car.type}</span>
+                  </div>
+                  <div style={{ color: '#666', fontSize: '15px', marginTop: '8px' }}>
+                    GPS ENABLED VEHICLES
+                  </div>
+                </div>
+
                 <button 
-                  className="btn-primary" 
-                  style={{ padding: '10px 20px', fontSize: '14px' }}
+                  style={{ 
+                    width: '100%', 
+                    padding: '16px', 
+                    background: '#FFD700', 
+                    border: 'none', 
+                    borderRadius: '4px',
+                    color: '#000',
+                    fontWeight: '800',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                    transition: 'background 0.3s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.background = '#e6c200'}
+                  onMouseLeave={(e) => e.target.style.background = '#FFD700'}
                   onClick={() => {
                     const message = encodeURIComponent(`Hi! I am interested in booking the ${car.name}.`);
                     window.open(`https://wa.me/917383304550?text=${message}`, '_blank');
                   }}
                 >
-                  Book Now
+                  BOOK TAXI NOW
                 </button>
               </div>
             </motion.div>
