@@ -36,7 +36,7 @@ const FloatingContact = () => {
 
       {/* WhatsApp Button */}
       <a 
-        href="https://wa.me/919898767619"
+        href="https://wa.me/919898767619?text=Hi!%20I%20need%20a%20cab."
         target="_blank"
         rel="noreferrer"
         style={{

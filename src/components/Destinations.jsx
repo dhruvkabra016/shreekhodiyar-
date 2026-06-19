@@ -38,8 +38,13 @@ const Destinations = () => {
               <div style={{ padding: '24px' }}>
                 <h3 className="text-gold" style={{ fontSize: '24px', marginBottom: '8px' }}>{dest.name}</h3>
                 <p style={{ color: '#aaa', fontSize: '14px', marginBottom: '20px' }}>{dest.desc}</p>
-                <button style={{ background: 'transparent', border: '1px solid var(--color-primary-gold)', color: 'var(--color-primary-gold)', padding: '8px 16px', borderRadius: '20px', cursor: 'pointer', transition: 'all 0.3s' }}>
-                  Explore
+                <button 
+                  onClick={() => {
+                    const message = encodeURIComponent(`Hi! I am interested in visiting ${dest.name}.`);
+                    window.open(`https://wa.me/919898767619?text=${message}`, '_blank');
+                  }}
+                  style={{ background: 'transparent', border: '1px solid var(--color-primary-gold)', color: 'var(--color-primary-gold)', padding: '8px 16px', borderRadius: '20px', cursor: 'pointer', transition: 'all 0.3s' }}>
+                  Book via WhatsApp
                 </button>
               </div>
             </motion.div>

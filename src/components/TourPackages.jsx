@@ -41,7 +41,7 @@ const TourPackages = () => {
                   Call Now
                 </a>
                 <a 
-                  href="https://wa.me/919898767619"
+                  href="https://wa.me/919898767619?text=Hi!%20I%20am%20interested%20in%20the%20Statue%20of%20Unity%20Cab%20Packages."
                   target="_blank"
                   rel="noreferrer"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#25D366', color: 'white', fontWeight: 'bold' }}
@@ -79,7 +79,7 @@ const TourPackages = () => {
                   Call Now
                 </a>
                 <a 
-                  href="https://wa.me/919898767619"
+                  href="https://wa.me/919898767619?text=Hi!%20I%20am%20interested%20in%20the%20Somnath%20%26%20Dwarka%20Darshan%20Package."
                   target="_blank"
                   rel="noreferrer"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#25D366', color: 'white', fontWeight: 'bold' }}
