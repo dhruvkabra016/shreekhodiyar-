@@ -35,14 +35,14 @@ const Navbar = () => {
       }}
     >
       <div className="container flex-between">
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+        <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
           <div className="text-gold" style={{ fontWeight: 900, fontSize: '24px', letterSpacing: '1px' }}>
             SHREE KHODIYAR
           </div>
         </Link>
 
         <div className="desktop-menu" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-          <Link to="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
+          <Link to="/" onClick={() => window.scrollTo(0, 0)} style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Home</Link>
           <a href="/#destinations" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Destinations</a>
           <a href="/#cars" style={{ color: 'white', textDecoration: 'none', fontWeight: 600 }}>Cars</a>
           
