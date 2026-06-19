@@ -63,7 +63,7 @@ const Fleet = () => {
                   borderBottomLeftRadius: '8px',
                   boxShadow: '-4px 4px 10px rgba(0,0,0,0.1)'
                 }}>
-                  ₹{car.price}/- DAY
+                  ₹{car.price}/- KM
                 </div>
               </div>
 
@@ -76,15 +76,19 @@ const Fleet = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px', flex: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
                     <span style={{ textTransform: 'uppercase' }}>{car.name}</span>
-                    <span>₹{car.price}/- DAY</span>
+                    <span>₹{car.price}/- KM</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
                     <span>SEATS:</span>
-                    <span style={{ fontWeight: '500', color: '#333' }}>{car.capacity}</span>
+                    <span style={{ fontWeight: '500', color: '#333' }}>{car.capacity || '4+1'}</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
-                    <span>TYPE:</span>
-                    <span style={{ fontWeight: '500', color: '#333', textTransform: 'uppercase' }}>{car.type}</span>
+                    <span>BAG:</span>
+                    <span style={{ fontWeight: '500', color: '#333' }}>{car.bags || '3'}</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', color: '#666', fontSize: '15px' }}>
+                    <span>PASSENGERS:</span>
+                    <span style={{ fontWeight: '500', color: '#333', textTransform: 'uppercase' }}>{car.passengers || '4 PERSON'}</span>
                   </div>
                   <div style={{ color: '#666', fontSize: '15px', marginTop: '8px' }}>
                     GPS ENABLED VEHICLES
