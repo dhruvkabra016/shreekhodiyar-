@@ -14,7 +14,7 @@ const FloatingContact = () => {
     }}>
       {/* Phone Button */}
       <a 
-        href="tel:7383304550"
+        href="tel:9898767619"
         style={{
           width: '60px',
           height: '60px',
@@ -36,7 +36,7 @@ const FloatingContact = () => {
 
       {/* WhatsApp Button */}
       <a 
-        href="https://wa.me/917383304550"
+        href="https://wa.me/919898767619"
         target="_blank"
         rel="noreferrer"
         style={{

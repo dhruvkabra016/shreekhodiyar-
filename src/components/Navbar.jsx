@@ -48,7 +48,7 @@ const Navbar = () => {
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-primary-gold)', fontWeight: 700 }}>
             <Phone size={20} />
-            7383304550
+            9898767619
           </div>
           
           <button 

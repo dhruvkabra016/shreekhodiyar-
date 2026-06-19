@@ -34,14 +34,14 @@ const TourPackages = () => {
               </p>
               <div style={{ display: 'flex', gap: '12px' }}>
                 <a 
-                  href="tel:7383304550"
+                  href="tel:9898767619"
                   className="btn-primary"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#ff0000', color: 'white', fontWeight: 'bold' }}
                 >
                   Call Now
                 </a>
                 <a 
-                  href="https://wa.me/917383304550"
+                  href="https://wa.me/919898767619"
                   target="_blank"
                   rel="noreferrer"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#25D366', color: 'white', fontWeight: 'bold' }}
@@ -72,14 +72,14 @@ const TourPackages = () => {
               </p>
               <div style={{ display: 'flex', gap: '12px' }}>
                 <a 
-                  href="tel:7383304550"
+                  href="tel:9898767619"
                   className="btn-primary"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#ff0000', color: 'white', fontWeight: 'bold' }}
                 >
                   Call Now
                 </a>
                 <a 
-                  href="https://wa.me/917383304550"
+                  href="https://wa.me/919898767619"
                   target="_blank"
                   rel="noreferrer"
                   style={{ flex: 1, textAlign: 'center', padding: '12px', borderRadius: '8px', textDecoration: 'none', background: '#25D366', color: 'white', fontWeight: 'bold' }}

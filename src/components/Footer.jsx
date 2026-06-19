@@ -37,7 +37,7 @@ const Footer = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Phone style={{ color: 'var(--color-primary-gold)', flexShrink: 0 }} />
-                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>7383304550</span>
+                <span style={{ color: 'white', fontWeight: 'bold', fontSize: '18px' }}>9898767619</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Mail style={{ color: 'var(--color-primary-gold)', flexShrink: 0 }} />
