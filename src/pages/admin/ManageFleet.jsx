@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Edit2, Trash2, Plus } from 'lucide-react';
 import { DataContext } from '../../context/DataContext';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const ManageFleet = () => {
-  const { fleet, setFleet } = useContext(DataContext);
+  const { fleet } = useContext(DataContext);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ id: null, name: '', type: '', capacity: '', price: '', img: '' });
 
@@ -12,18 +14,15 @@ const ManageFleet = () => {
     setShowForm(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this vehicle?')) {
-      setFleet(fleet.filter(car => car.id !== id));
+      await deleteDoc(doc(db, 'fleet', id.toString()));
     }
   };
 
-  const handleSave = () => {
-    if (formData.id) {
-      setFleet(fleet.map(car => car.id === formData.id ? formData : car));
-    } else {
-      setFleet([...fleet, { ...formData, id: Date.now() }]);
-    }
+  const handleSave = async () => {
+    const id = formData.id ? formData.id.toString() : Date.now().toString();
+    await setDoc(doc(db, 'fleet', id), { ...formData, id });
     setShowForm(false);
     setFormData({ id: null, name: '', type: '', capacity: '', price: '', img: '' });
   };

@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { collection, onSnapshot, doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export const DataContext = createContext();
 
@@ -11,7 +13,7 @@ const initialFleet = [
     bags: '3',
     passengers: '4 PERSON',
     price: '11',
-    img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1000&auto=format&fit=crop' // Using a clean white car image
+    img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=1000&auto=format&fit=crop'
   }
 ];
 
@@ -22,35 +24,39 @@ const initialDestinations = [
   { id: 4, name: 'Rann of Kutch', desc: 'Witness the breathtaking beauty of the endless white salt desert.', img: 'https://images.unsplash.com/photo-1598218128362-7201c13d7065?q=80&w=1000&auto=format&fit=crop', status: 'Active' }
 ];
 
-const initialBookings = [];
-
 export const DataProvider = ({ children }) => {
-  const [fleet, setFleet] = useState(() => {
-    const saved = localStorage.getItem('shree_khodiyar_fleet_v4');
-    return saved ? JSON.parse(saved) : initialFleet;
-  });
-
-  const [destinations, setDestinations] = useState(() => {
-    const saved = localStorage.getItem('shree_khodiyar_destinations_v4');
-    return saved ? JSON.parse(saved) : initialDestinations;
-  });
-
-  const [bookings, setBookings] = useState(() => {
-    const saved = localStorage.getItem('shree_khodiyar_bookings_v4');
-    return saved ? JSON.parse(saved) : initialBookings;
-  });
+  const [fleet, setFleet] = useState(initialFleet);
+  const [destinations, setDestinations] = useState(initialDestinations);
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('shree_khodiyar_fleet_v4', JSON.stringify(fleet));
-  }, [fleet]);
+    const unsubscribeFleet = onSnapshot(collection(db, 'fleet'), (snapshot) => {
+      const fleetData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      if (fleetData.length > 0) {
+        setFleet(fleetData);
+      } else {
+        initialFleet.forEach(async (car) => {
+          await setDoc(doc(db, 'fleet', car.id.toString()), car);
+        });
+      }
+    });
 
-  useEffect(() => {
-    localStorage.setItem('shree_khodiyar_destinations_v4', JSON.stringify(destinations));
-  }, [destinations]);
+    const unsubscribeDest = onSnapshot(collection(db, 'destinations'), (snapshot) => {
+      const destData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      if (destData.length > 0) {
+        setDestinations(destData);
+      } else {
+        initialDestinations.forEach(async (dest) => {
+          await setDoc(doc(db, 'destinations', dest.id.toString()), dest);
+        });
+      }
+    });
 
-  useEffect(() => {
-    localStorage.setItem('shree_khodiyar_bookings_v4', JSON.stringify(bookings));
-  }, [bookings]);
+    return () => {
+      unsubscribeFleet();
+      unsubscribeDest();
+    };
+  }, []);
 
   return (
     <DataContext.Provider value={{ fleet, setFleet, destinations, setDestinations, bookings, setBookings }}>

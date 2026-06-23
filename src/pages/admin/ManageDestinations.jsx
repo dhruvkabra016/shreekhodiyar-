@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Edit2, Trash2, Plus } from 'lucide-react';
 import { DataContext } from '../../context/DataContext';
+import { doc, setDoc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 const ManageDestinations = () => {
-  const { destinations, setDestinations } = useContext(DataContext);
+  const { destinations } = useContext(DataContext);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({ id: null, name: '', desc: '', img: '', status: 'Active' });
 
@@ -12,18 +14,15 @@ const ManageDestinations = () => {
     setShowForm(true);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this destination?')) {
-      setDestinations(destinations.filter(d => d.id !== id));
+      await deleteDoc(doc(db, 'destinations', id.toString()));
     }
   };
 
-  const handleSave = () => {
-    if (formData.id) {
-      setDestinations(destinations.map(d => d.id === formData.id ? formData : d));
-    } else {
-      setDestinations([...destinations, { ...formData, id: Date.now() }]);
-    }
+  const handleSave = async () => {
+    const id = formData.id ? formData.id.toString() : Date.now().toString();
+    await setDoc(doc(db, 'destinations', id), { ...formData, id });
     setShowForm(false);
     setFormData({ id: null, name: '', desc: '', img: '', status: 'Active' });
   };
