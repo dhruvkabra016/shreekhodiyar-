@@ -21,10 +21,15 @@ const ManageDestinations = () => {
   };
 
   const handleSave = async () => {
-    const id = formData.id ? formData.id.toString() : Date.now().toString();
-    await setDoc(doc(db, 'destinations', id), { ...formData, id });
-    setShowForm(false);
-    setFormData({ id: null, name: '', desc: '', img: '', status: 'Active' });
+    try {
+      const id = formData.id ? formData.id.toString() : Date.now().toString();
+      await setDoc(doc(db, 'destinations', id), { ...formData, id });
+      setShowForm(false);
+      setFormData({ id: null, name: '', desc: '', img: '', status: 'Active' });
+    } catch (error) {
+      console.error("Save Error:", error);
+      alert("Error saving destination! Check your Firebase Permissions or Network.");
+    }
   };
 
   return (
@@ -64,8 +69,27 @@ const ManageDestinations = () => {
                   const file = e.target.files[0];
                   if (file) {
                     const reader = new FileReader();
-                    reader.onloadend = () => {
-                      setFormData({...formData, img: reader.result});
+                    reader.onload = (event) => {
+                      const img = new Image();
+                      img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let { width, height } = img;
+                        const MAX_SIZE = 800;
+                        if (width > height && width > MAX_SIZE) {
+                          height *= MAX_SIZE / width;
+                          width = MAX_SIZE;
+                        } else if (height > MAX_SIZE) {
+                          width *= MAX_SIZE / height;
+                          height = MAX_SIZE;
+                        }
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        setFormData({...formData, img: dataUrl});
+                      };
+                      img.src = event.target.result;
                     };
                     reader.readAsDataURL(file);
                   }
