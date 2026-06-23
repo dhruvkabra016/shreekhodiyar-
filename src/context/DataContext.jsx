@@ -30,27 +30,40 @@ export const DataProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    const unsubscribeFleet = onSnapshot(collection(db, 'fleet'), (snapshot) => {
-      const fleetData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      if (fleetData.length > 0) {
-        setFleet(fleetData);
-      } else {
-        initialFleet.forEach(async (car) => {
-          await setDoc(doc(db, 'fleet', car.id.toString()), car);
-        });
-      }
-    });
+    let unsubscribeFleet = () => {};
+    let unsubscribeDest = () => {};
 
-    const unsubscribeDest = onSnapshot(collection(db, 'destinations'), (snapshot) => {
-      const destData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      if (destData.length > 0) {
-        setDestinations(destData);
-      } else {
-        initialDestinations.forEach(async (dest) => {
-          await setDoc(doc(db, 'destinations', dest.id.toString()), dest);
-        });
-      }
-    });
+    try {
+      unsubscribeFleet = onSnapshot(collection(db, 'fleet'), (snapshot) => {
+        const fleetData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        if (fleetData.length > 0) {
+          setFleet(fleetData);
+        } else {
+          initialFleet.forEach(async (car) => {
+            try { await setDoc(doc(db, 'fleet', car.id.toString()), car); } catch(e) {}
+          });
+        }
+      }, (error) => {
+        console.error("Firebase Fleet Error:", error);
+        setFleet(initialFleet); // Fallback to default if error
+      });
+
+      unsubscribeDest = onSnapshot(collection(db, 'destinations'), (snapshot) => {
+        const destData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        if (destData.length > 0) {
+          setDestinations(destData);
+        } else {
+          initialDestinations.forEach(async (dest) => {
+            try { await setDoc(doc(db, 'destinations', dest.id.toString()), dest); } catch(e) {}
+          });
+        }
+      }, (error) => {
+        console.error("Firebase Destinations Error:", error);
+        setDestinations(initialDestinations); // Fallback
+      });
+    } catch (err) {
+      console.error("Firebase Init Error:", err);
+    }
 
     return () => {
       unsubscribeFleet();
