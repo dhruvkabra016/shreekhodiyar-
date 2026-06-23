@@ -58,8 +58,27 @@ const ManageFleet = () => {
               <input type="number" value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} placeholder="e.g., 10000" style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '8px' }} />
             </div>
             <div style={{ gridColumn: '1 / -1' }}>
-              <label style={{ display: 'block', color: '#aaa', marginBottom: '8px' }}>Image URL</label>
-              <input type="text" value={formData.img} onChange={e => setFormData({...formData, img: e.target.value})} placeholder="https://..." style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '8px' }} />
+              <label style={{ display: 'block', color: '#aaa', marginBottom: '8px' }}>Upload Image</label>
+              <input 
+                type="file" 
+                accept="image/*" 
+                onChange={e => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                      setFormData({...formData, img: reader.result});
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }} 
+                style={{ width: '100%', padding: '12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', borderRadius: '8px' }} 
+              />
+              {formData.img && (
+                <div style={{ marginTop: '12px' }}>
+                  <img src={formData.img} alt="Preview" style={{ height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                </div>
+              )}
             </div>
             <div style={{ gridColumn: '1 / -1', display: 'flex', justifyContent: 'flex-end', gap: '16px', marginTop: '16px' }}>
               <button type="button" onClick={() => setShowForm(false)} style={{ padding: '10px 24px', background: 'transparent', border: '1px solid #aaa', color: '#aaa', borderRadius: '8px', cursor: 'pointer' }}>Cancel</button>
